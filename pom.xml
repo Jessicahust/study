@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.taobao</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.cainiao.work</groupId>
+    <artifactId>study</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>study</name>
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <mockito-all.version>1.10.19</mockito-all.version>
+        <spring-boot.version>1.5.12.RELEASE</spring-boot.version>
+        <maven-antrun.version>1.8</maven-antrun.version>
+        <pandora-boot.version>2018-01-release</pandora-boot.version>
+        <pandora-boot-maven-plugin.version>2.1.7.11</pandora-boot-maven-plugin.version>
+    </properties>
+
+    <modules>
+        <module>study-service</module>
+        <module>study-start</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.0.43.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.8.13</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.taobao.pandora</groupId>
+                <artifactId>pandora-boot-starter-bom</artifactId>
+                <version>${pandora-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.cainiao.work</groupId>
+                <artifactId>study-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito-all.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.taobao.pandora</groupId>
+                    <artifactId>pandora-boot-maven-plugin</artifactId>
+                    <version>${pandora-boot-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
